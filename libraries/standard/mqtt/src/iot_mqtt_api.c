@@ -165,7 +165,7 @@ static void _destroyMqttConnection( _mqttConnection_t * pMqttConnection );
  * description of the parameters and return values.
  */
 static IotMqttError_t _subscriptionCommonSetup( IotMqttOperationType_t operation,
-                                                IotMqttConnection_t mqttConnection,
+                                                const IotMqttConnection_t mqttConnection,
                                                 const IotMqttSubscription_t * pSubscriptionList,
                                                 size_t subscriptionCount,
                                                 uint32_t flags,
@@ -238,7 +238,7 @@ static IotMqttError_t _waitForOperation( IotMqttOperation_t operation,
  *
  * @return #IOT_MQTT_SUCCESS, #IOT_MQTT_SCHEDULING_ERROR.
  */
-static IotMqttError_t _scheduleKeepAlive( IotMqttConnection_t pMqttConnection );
+static IotMqttError_t _scheduleKeepAlive( const IotMqttConnection_t pMqttConnection );
 
 /**
  * @brief Utility function for sending connect request.
@@ -332,7 +332,7 @@ static void _handleConnectFailure( IotMqttConnection_t pMqttConnection,
  * @brief Place holder packet identifier used when
  * _IotMqtt_AddSubscriptions is called with previous subscriptions lists.
  * Any non-zero value is acceptable, since this value is never sent out to
- * the broker. 
+ * the broker.
  */
 #define IOT_MQTT_PREVIOUS_SUBSCRIPTIONS_PACKET_ID    1
 
@@ -363,6 +363,8 @@ static bool _checkInit( void )
 
 /*-----------------------------------------------------------*/
 
+/* This function's parameters follow IotListDouble_FindFirstMatch so const can not be added to pMatch. */
+/* coverity[misra_c_2012_rule_8_13_violation] */
 static bool _mqttSubscription_setUnsubscribe( const IotLink_t * const pSubscriptionLink,
                                               void * pMatch )
 {
@@ -704,7 +706,7 @@ static void _destroyMqttConnection( _mqttConnection_t * pMqttConnection )
 
 /*-----------------------------------------------------------*/
 static IotMqttError_t _subscriptionCommonSetup( IotMqttOperationType_t operation,
-                                                IotMqttConnection_t mqttConnection,
+                                                const IotMqttConnection_t mqttConnection,
                                                 const IotMqttSubscription_t * pSubscriptionList,
                                                 size_t subscriptionCount,
                                                 uint32_t flags,
@@ -966,7 +968,7 @@ static IotMqttError_t _waitForOperation( IotMqttOperation_t operation,
 
 /*-----------------------------------------------------------*/
 
-static IotMqttError_t _scheduleKeepAlive( IotMqttConnection_t pMqttConnection )
+static IotMqttError_t _scheduleKeepAlive( const IotMqttConnection_t pMqttConnection )
 {
     IotMqttError_t status = IOT_MQTT_SUCCESS;
     IotTaskPoolError_t taskPoolStatus = IOT_TASKPOOL_SUCCESS;

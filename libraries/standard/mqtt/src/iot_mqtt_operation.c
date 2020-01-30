@@ -158,6 +158,8 @@ static bool _sendPingRequest( _mqttConnection_t * pMqttConnection );
 
 /*-----------------------------------------------------------*/
 
+/* This function's parameters follow IotListDouble_FindFirstMatch so const can not be added to pMatch. */
+/* coverity[misra_c_2012_rule_8_13_violation] */
 static bool _mqttOperation_match( const IotLink_t * const pOperationLink,
                                   void * pMatch )
 {
@@ -913,8 +915,8 @@ void _IotMqtt_ProcessKeepAlive( IotTaskPool_t pTaskPool,
 
 /*-----------------------------------------------------------*/
 
-void _IotMqtt_ProcessIncomingPublish( IotTaskPool_t pTaskPool,
-                                      IotTaskPoolJob_t pPublishJob,
+void _IotMqtt_ProcessIncomingPublish( const IotTaskPool_t pTaskPool,
+                                      const IotTaskPoolJob_t pPublishJob,
                                       void * pContext )
 {
     _mqttOperation_t * pOperation = pContext;
@@ -953,8 +955,8 @@ void _IotMqtt_ProcessIncomingPublish( IotTaskPool_t pTaskPool,
 
 /*-----------------------------------------------------------*/
 
-void _IotMqtt_ProcessSend( IotTaskPool_t pTaskPool,
-                           IotTaskPoolJob_t pSendJob,
+void _IotMqtt_ProcessSend( const IotTaskPool_t pTaskPool,
+                           const IotTaskPoolJob_t pSendJob,
                            void * pContext )
 {
     size_t bytesSent = 0;
@@ -1053,8 +1055,8 @@ void _IotMqtt_ProcessSend( IotTaskPool_t pTaskPool,
 
 /*-----------------------------------------------------------*/
 
-void _IotMqtt_ProcessCompletedOperation( IotTaskPool_t pTaskPool,
-                                         IotTaskPoolJob_t pOperationJob,
+void _IotMqtt_ProcessCompletedOperation( const IotTaskPool_t pTaskPool,
+                                         const IotTaskPoolJob_t pOperationJob,
                                          void * pContext )
 {
     _mqttOperation_t * pOperation = ( _mqttOperation_t * ) pContext;

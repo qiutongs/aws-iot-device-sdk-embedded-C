@@ -684,7 +684,7 @@ bool _IotMqtt_ValidateLwtPublish( bool awsIotMqttMode,
 
 /*-----------------------------------------------------------*/
 
-bool _IotMqtt_ValidateOperation( IotMqttOperation_t operation )
+bool _IotMqtt_ValidateOperation( const IotMqttOperation_t operation )
 {
     bool status = true;
 

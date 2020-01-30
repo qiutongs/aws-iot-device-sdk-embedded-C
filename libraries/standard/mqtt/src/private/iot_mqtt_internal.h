@@ -518,7 +518,7 @@ bool _IotMqtt_ValidateLwtPublish( bool awsIotMqttMode,
  *
  * @return `true` if `operation` is valid; `false` otherwise.
  */
-bool _IotMqtt_ValidateOperation( IotMqttOperation_t operation );
+bool _IotMqtt_ValidateOperation( const IotMqttOperation_t operation );
 
 /**
  * @brief Check that a list of #IotMqttSubscription_t is valid.
@@ -845,8 +845,8 @@ void _IotMqtt_ProcessKeepAlive( IotTaskPool_t pTaskPool,
  * @param[in] pContext Pointer to the incoming PUBLISH operation, passed as an
  * opaque context.
  */
-void _IotMqtt_ProcessIncomingPublish( IotTaskPool_t pTaskPool,
-                                      IotTaskPoolJob_t pPublishJob,
+void _IotMqtt_ProcessIncomingPublish( const IotTaskPool_t pTaskPool,
+                                      const IotTaskPoolJob_t pPublishJob,
                                       void * pContext );
 
 /**
@@ -857,8 +857,8 @@ void _IotMqtt_ProcessIncomingPublish( IotTaskPool_t pTaskPool,
  * @param[in] pContext Pointer to the operation to send, passed as an opaque
  * context.
  */
-void _IotMqtt_ProcessSend( IotTaskPool_t pTaskPool,
-                           IotTaskPoolJob_t pSendJob,
+void _IotMqtt_ProcessSend( const IotTaskPool_t pTaskPool,
+                           const IotTaskPoolJob_t pSendJob,
                            void * pContext );
 
 /**
@@ -869,8 +869,8 @@ void _IotMqtt_ProcessSend( IotTaskPool_t pTaskPool,
  * @param[in] pContext Pointer to the completed operation, passed as an opaque
  * context.
  */
-void _IotMqtt_ProcessCompletedOperation( IotTaskPool_t pTaskPool,
-                                         IotTaskPoolJob_t pOperationJob,
+void _IotMqtt_ProcessCompletedOperation( const IotTaskPool_t pTaskPool,
+                                         const IotTaskPoolJob_t pOperationJob,
                                          void * pContext );
 
 /**
