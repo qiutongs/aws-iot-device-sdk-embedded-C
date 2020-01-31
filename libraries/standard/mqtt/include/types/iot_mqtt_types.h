@@ -772,6 +772,7 @@ typedef IotMqttError_t ( * IotMqttSerializePingreq_t )( uint8_t ** pDisconnectPa
  * @param[out] uint8_t** Where the high byte of the packet identifier
  * is written.
  */
+/* coverity[misra_c_2012_rule_2_3_violation] */
 typedef IotMqttError_t ( * IotMqtt_SerializePublish_t )( const IotMqttPublishInfo_t * pPublishInfo,
                                                          uint8_t ** pPublishPacket,
                                                          size_t * pPacketSize,
