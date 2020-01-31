@@ -363,8 +363,8 @@ static bool _checkInit( void )
 
 /*-----------------------------------------------------------*/
 
+/* This function's parameters follow IotListDouble_FindFirstMatch so const can not be added to pMatch. */
 static bool _mqttSubscription_setUnsubscribe( const IotLink_t * const pSubscriptionLink,
-                                              /* This function's parameters follow IotListDouble_FindFirstMatch so const can not be added to pMatch. */
                                               /* coverity[misra_c_2012_rule_8_13_violation] */
                                               void * pMatch )
 {
